@@ -5,7 +5,7 @@ use embedded_graphics::{
     pixelcolor::Rgb888,
     prelude::*,
     primitives::{Line, PrimitiveStyle},
-    text::{Text, TextStyle},
+    text::{renderer::TextRenderer, Text, TextStyle},
 };
 use embedded_graphics_simulator::{OutputSettingsBuilder, SimulatorDisplay, Window};
 use embedded_vintage_fonts::*;
@@ -30,6 +30,8 @@ fn main() -> Result<(), core::convert::Infallible> {
 
     for font in fonts.iter() {
         let character_style = character_style.font(font).build();
+
+        position += Point::new(0, character_style.line_height() as i32);
 
         let test_text  = format!("Hello world! jpyJPY{}\n¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿\nÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ\nßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ\u{ffff}", font.character_size);
 
