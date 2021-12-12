@@ -37,7 +37,7 @@ fn main() -> Result<(), core::convert::Infallible> {
 
         position += Point::new(0, character_style.line_height() as i32);
 
-        let test_text  = format!("Hello world! jpyJPY{}\n¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿\nÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ\nßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ\u{ffff}", font.character_size);
+        let test_text  = format!("Hello world! jpyJPY{}\n_~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿€Œœ\nÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ\nßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ\u{ffff}", font.character_size);
 
         // Draw the font baseline behind the first line of text
         Line::new(
