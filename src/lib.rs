@@ -10,12 +10,12 @@ use embedded_graphics::{
 
 const GLYPH_MAPPING: StrGlyphMapping =
     StrGlyphMapping::new("\0\u{20}\u{7e}\0\u{a1}\u{ff}", '?' as usize - ' ' as usize);
-// KLUDGE: FONT_6x6 is a mix of ISO-8859-1 and ISO-8859-15. It lacks a glyph
-// between 'œ' and '¿' which is represented by a space in the string glyph
-// mapping betting on space being handled at its first occurrence at the very
-// beginning.
+// KLUDGE: FONT_6x6 is a mix of ISO-8859-1 and ISO-8859-15. It contains
+// positions for glyphs which are empty (DEL and between 'œ' and '¿'). These
+// are represented in this mapping by a space betting on space being handled at
+// its first occurrence at the very beginning.
 const GLYPH_MAPPING_6X6: StrGlyphMapping = StrGlyphMapping::new(
-    "\0\u{20}\u{7f}\u{a0}¡¢£€\0¥»Œœ ¿",
+    "\0\u{20}\u{7e} \u{a0}¡¢£€\0¥»Œœ ¿",
     '?' as usize - ' ' as usize,
 );
 const GLYPH_MAPPING_6X12: StrGlyphMapping =
