@@ -91,6 +91,10 @@ pub fn check_correct_dollar_y(
     Ok(())
 }
 
+// Not all fonts provided by this crate support Latin 1/ISO 8859-1. As tests
+// get compiled individually, don't warn about it for fonts not using this
+// check.
+#[allow(dead_code)]
 pub fn check_correct_latin1(
     font: &MonoFont,
     reference: &[&str],
