@@ -2,13 +2,8 @@
 
 mod common;
 use embedded_graphics::{
-    geometry::Point,
-    mock_display::MockDisplay,
-    mono_font::MonoTextStyleBuilder,
-    pixelcolor::BinaryColor,
-    text::Text,
-    transform::Transform,
-    Drawable,
+    geometry::Point, mock_display::MockDisplay, mono_font::MonoTextStyleBuilder,
+    pixelcolor::BinaryColor, text::Text, transform::Transform, Drawable,
 };
 use embedded_vintage_fonts::FONT_6X12;
 
@@ -47,6 +42,7 @@ fn correct_m() -> Result<(), core::convert::Infallible> {
 
 #[test]
 fn correct_ascii_borders() -> Result<(), core::convert::Infallible> {
+    #[rustfmt::skip]
     common::check_correct_ascii_borders(
         &FONT_6X12,
         &[

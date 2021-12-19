@@ -21,6 +21,7 @@ fn main() -> Result<(), core::convert::Infallible> {
 
     let text_style = TextStyle::default();
 
+    #[rustfmt::skip]
     let fonts = [
         FONT_6X8,
         FONT_6X12,

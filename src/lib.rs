@@ -1,18 +1,15 @@
 #![no_std]
 
-
 use embedded_graphics::{
     geometry::Size,
     image::ImageRaw,
     mono_font::{mapping::StrGlyphMapping, DecorationDimensions, MonoFont},
 };
 
-
 const GLYPH_MAPPING: StrGlyphMapping =
     StrGlyphMapping::new("\0\u{20}\u{7e}\0\u{a1}\u{ff}", '?' as usize - ' ' as usize);
 const GLYPH_MAPPING_6X12: StrGlyphMapping =
     StrGlyphMapping::new("\0\u{20}\u{7e}", '?' as usize - ' ' as usize);
-
 
 pub const FONT_24X32: MonoFont = MonoFont {
     image: ImageRaw::new_binary(include_bytes!("../data/font24x32_1bpp.raw"), 960),
@@ -23,7 +20,6 @@ pub const FONT_24X32: MonoFont = MonoFont {
     underline: DecorationDimensions::new(29, 4),
     glyph_mapping: &GLYPH_MAPPING,
 };
-
 
 pub const FONT_12X16: MonoFont = MonoFont {
     image: ImageRaw::new_binary(include_bytes!("../data/font12x16_1bpp.raw"), 480),

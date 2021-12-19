@@ -42,6 +42,7 @@ fn correct_m() -> Result<(), core::convert::Infallible> {
 
 #[test]
 fn correct_ascii_borders() -> Result<(), core::convert::Infallible> {
+    #[rustfmt::skip]
     common::check_correct_ascii_borders(
         &FONT_8X16,
         &[

@@ -30,8 +30,7 @@ fn correct_inverse_colored_m() -> Result<(), core::convert::Infallible> {
         .text_color(BinaryColor::Off)
         .background_color(BinaryColor::On)
         .build();
-    Text::new("Mm", common::baseline_point(font), style)
-        .draw(&mut display)?;
+    Text::new("Mm", common::baseline_point(font), style).draw(&mut display)?;
 
     assert_eq!(
         display,
@@ -60,8 +59,7 @@ fn compare_inverse_colored_m() -> Result<(), core::convert::Infallible> {
         .text_color(BinaryColor::Off)
         .background_color(BinaryColor::On)
         .build();
-    Text::new("Mm", common::baseline_point(font), style_inverse)
-        .draw(&mut display_inverse)?;
+    Text::new("Mm", common::baseline_point(font), style_inverse).draw(&mut display_inverse)?;
 
     let mut display_normal = MockDisplay::new();
     let style_normal = MonoTextStyleBuilder::new()
@@ -69,9 +67,7 @@ fn compare_inverse_colored_m() -> Result<(), core::convert::Infallible> {
         .text_color(BinaryColor::On)
         .background_color(BinaryColor::Off)
         .build();
-    Text::new("Mm", common::baseline_point(&font), style_normal)
-        .draw(&mut display_normal)?;
-
+    Text::new("Mm", common::baseline_point(&font), style_normal).draw(&mut display_normal)?;
 
     let rect = display_inverse.affected_area();
     assert!(!rect.is_zero_sized());
@@ -110,6 +106,7 @@ fn correct_m() -> Result<(), core::convert::Infallible> {
 
 #[test]
 fn correct_ascii_borders() -> Result<(), core::convert::Infallible> {
+    #[rustfmt::skip]
     common::check_correct_ascii_borders(
         &FONT_6X8,
         &[
@@ -192,8 +189,7 @@ fn no_fill_doesnt_hang() -> Result<(), core::convert::Infallible> {
     let font = &FONT_6X8;
     let mut display = MockDisplay::new();
     let style = MonoTextStyle::new(font, BinaryColor::On);
-    Text::new(" ", common::baseline_point(font), style)
-        .draw(&mut display)?;
+    Text::new(" ", common::baseline_point(font), style).draw(&mut display)?;
 
     assert_eq!(display, MockDisplay::new());
 
