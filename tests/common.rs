@@ -12,7 +12,7 @@ use embedded_graphics::{
 
 const HELLO_WORLD: &str = "Hello World!";
 
-fn baseline_point(font: &MonoFont) -> Point {
+pub fn baseline_point(font: &MonoFont) -> Point {
     Point::new(0, font.baseline as i32)
 }
 

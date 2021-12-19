@@ -3,10 +3,12 @@
 mod common;
 use embedded_graphics::{
     geometry::Point,
+    mock_display::MockDisplay,
     mono_font::MonoTextStyleBuilder,
     pixelcolor::BinaryColor,
     text::Text,
     transform::Transform,
+    Drawable,
 };
 use embedded_vintage_fonts::FONT_6X12;
 
@@ -119,32 +121,54 @@ fn dont_panic() -> Result<(), core::convert::Infallible> {
     Ok(())
 }
 
-// FIXME: Port these test cases.
-// #[test]
-// fn negative_y_no_infinite_loop() {
-//     let font = &FONT_6X12;
-//     let style = MonoTextStyleBuilder::new()
-//         .font(font)
-//         .text_color(BinaryColor::On)
-//         .background_color(BinaryColor::Off)
-//         .build();
-// 
-//     let mut text = Text::new("Testing string", common::baseline_point(font), style);
-//     text.translate_mut(Point::new(0, -12));
-// 
-//     assert_eq!(text.pixels().count(), 6 * 12 * "Testing string".len());
-// }
-// 
-// #[test]
-// fn negative_x_no_infinite_loop() {
-//     let style = TextStyle {
-//         font: Font6x12,
-//         text_color: Some(BinaryColor::On),
-//         background_color: Some(BinaryColor::Off),
-//     };
-// 
-//     let mut text = Text::new("A", Point::zero()).into_styled(style);
-//     text.translate_mut(Point::new(-6, 0));
-// 
-//     assert_eq!(text.into_iter().count(), 6 * 12);
-// }
+#[test]
+fn negative_y_no_infinite_loop() -> Result<(), core::convert::Infallible> {
+    let font = &FONT_6X12;
+    let style = MonoTextStyleBuilder::new()
+        .font(font)
+        .text_color(BinaryColor::On)
+        .background_color(BinaryColor::Off)
+        .build();
+
+    let mut display = MockDisplay::new();
+    display.set_allow_out_of_bounds_drawing(true);
+
+    let mut text = Text::new("Testing string", common::baseline_point(font), style);
+    text.translate_mut(Point::new(0, -12));
+    text.draw(&mut display)?;
+
+    // Draing is expected to take place outside the display bounds.
+    //
+    // In embedded-graphics 0.6 there was a pixel iterator from StyledText
+    // available so we could check for the actual number of affected pixels.
+    // But this is currently not the case for 0.7.
+    assert!(display.affected_area().is_zero_sized());
+
+    Ok(())
+}
+
+#[test]
+fn negative_x_no_infinite_loop() -> Result<(), core::convert::Infallible> {
+    let font = &FONT_6X12;
+    let style = MonoTextStyleBuilder::new()
+        .font(font)
+        .text_color(BinaryColor::On)
+        .background_color(BinaryColor::Off)
+        .build();
+
+    let mut display = MockDisplay::new();
+    display.set_allow_out_of_bounds_drawing(true);
+
+    let mut text = Text::new("A", common::baseline_point(font), style);
+    text.translate_mut(Point::new(-6, 0));
+    text.draw(&mut display)?;
+
+    // Draing is expected to take place outside the display bounds.
+    //
+    // In embedded-graphics 0.6 there was a pixel iterator from StyledText
+    // available so we could check for the actual number of affected pixels.
+    // But this is currently not the case for 0.7.
+    assert!(display.affected_area().is_zero_sized());
+
+    Ok(())
+}
