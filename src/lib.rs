@@ -10,6 +10,14 @@ use embedded_graphics::{
 
 const GLYPH_MAPPING: StrGlyphMapping =
     StrGlyphMapping::new("\0\u{20}\u{7e}\0\u{a1}\u{ff}", '?' as usize - ' ' as usize);
+// KLUDGE: FONT_6x6 is a mix of ISO-8859-1 and ISO-8859-15. It lacks a glyph
+// between 'œ' and '¿' which is represented by a space in the string glyph
+// mapping betting on space being handled at its first occurrence at the very
+// beginning.
+const GLYPH_MAPPING_6X6: StrGlyphMapping = StrGlyphMapping::new(
+    "\0\u{20}\u{7f}\u{a0}¡¢£€\0¥»Œœ ¿",
+    '?' as usize - ' ' as usize,
+);
 const GLYPH_MAPPING_6X12: StrGlyphMapping =
     StrGlyphMapping::new("\0\u{20}\u{7e}", '?' as usize - ' ' as usize);
 
@@ -35,7 +43,7 @@ pub const FONT_12X16: MonoFont = MonoFont {
     glyph_mapping: &GLYPH_MAPPING,
 };
 
-pub const FONT_8X12: MonoFont = MonoFont {
+pub const FONT_8X16: MonoFont = MonoFont {
     image: ImageRaw::new_binary(include_bytes!("../data/font8x16_1bpp.raw"), 240),
     character_size: Size::new(8, 16),
     character_spacing: 0,
@@ -63,4 +71,14 @@ pub const FONT_6X8: MonoFont = MonoFont {
     strikethrough: DecorationDimensions::new(3, 1),
     underline: DecorationDimensions::new(8, 1),
     glyph_mapping: &GLYPH_MAPPING,
+};
+
+pub const FONT_6X6: MonoFont = MonoFont {
+    image: ImageRaw::new_binary(include_bytes!("../data/font6x6_1bpp.raw"), 192),
+    character_size: Size::new(6, 6),
+    character_spacing: 0,
+    baseline: 4,
+    strikethrough: DecorationDimensions::new(2, 1),
+    underline: DecorationDimensions::new(6, 1),
+    glyph_mapping: &GLYPH_MAPPING_6X6,
 };

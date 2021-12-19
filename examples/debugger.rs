@@ -22,9 +22,10 @@ fn main() -> Result<(), core::convert::Infallible> {
     let text_style = TextStyle::default();
 
     let fonts = [
+        FONT_6X6,
         FONT_6X8,
         FONT_6X12,
-        FONT_8X12,
+        FONT_8X16,
         FONT_12X16,
         FONT_24X32,
     ];
