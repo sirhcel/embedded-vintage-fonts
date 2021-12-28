@@ -11,7 +11,7 @@ use embedded_graphics_simulator::{OutputSettingsBuilder, SimulatorDisplay, Windo
 use embedded_vintage_fonts::*;
 
 fn main() -> Result<(), core::convert::Infallible> {
-    let mut display: SimulatorDisplay<Rgb888> = SimulatorDisplay::new(Size::new(1000, 500));
+    let mut display: SimulatorDisplay<Rgb888> = SimulatorDisplay::new(Size::new(900, 700));
 
     let character_style = MonoTextStyleBuilder::new()
         // Uncomment to add strikethrough and/or underline to all sizes.
@@ -37,7 +37,7 @@ fn main() -> Result<(), core::convert::Infallible> {
 
         position += Point::new(0, character_style.line_height() as i32);
 
-        let test_text  = format!("Hello world! jpyJPY{}\n¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿\nÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞ\nßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ\u{ffff}", font.character_size);
+        let test_text  = format!("Hello world! jpyJPY {}\n !\"#$%&'()*+,-./0123456789:;<=>?\n@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_\n`abcdefghijklmnopqrstuvwxyz{{|}}~\n\u{a0}¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿\nÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞß\nàáâãäåæçèéêëìíîïÐñòóôõö÷øùúûüýþÿ \u{ffff}", font.character_size);
 
         // Draw the font baseline behind the first line of text
         Line::new(
