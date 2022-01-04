@@ -9,6 +9,7 @@ edition = "2021"
 embedded-graphics = "0.7.0"
 
 [dev-dependencies]
-# Automatically depend on desktop simulator for embedded graphics when building
-# and running tests and examples.
+# Automatically depend on command line parser and desktop simulator for
+# embedded graphics when building and running tests and examples.
+clap = { version = "3.0.3", features = ["derive"] }
 embedded-graphics-simulator = "0.3.0"

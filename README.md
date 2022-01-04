@@ -38,6 +38,12 @@ Have a look at the fonts with an adapted variant of
 ```
 $ cargo run --example debugger
 ```
+One can activate strikethrough and underline style with the command line
+options `--strikethrough` and `--underline`. For example to enable both at the
+same time via Cargo:
+```
+$ cargo run --example debugger -- --strikethrough --underline
+```
 
 
 ## License

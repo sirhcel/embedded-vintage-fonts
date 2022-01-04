@@ -1,5 +1,6 @@
 //! Renders all characters in all sizes for debugging purposes.
 
+use clap::Parser;
 use embedded_graphics::{
     mono_font::MonoTextStyleBuilder,
     pixelcolor::Rgb888,
@@ -10,14 +11,31 @@ use embedded_graphics::{
 use embedded_graphics_simulator::{OutputSettingsBuilder, SimulatorDisplay, Window};
 use embedded_vintage_fonts::*;
 
+/// Simple "debugger" showing the fonts contained in this crate
+#[derive(Debug, Parser)]
+#[clap(about, version)]
+struct Args {
+    /// Enable striketrough style
+    #[clap(short, long)]
+    strikethrough: bool,
+
+    /// Enable underline style
+    #[clap(short, long)]
+    underline: bool,
+}
+
 fn main() -> Result<(), core::convert::Infallible> {
+    let args = Args::parse();
     let mut display: SimulatorDisplay<Rgb888> = SimulatorDisplay::new(Size::new(900, 700));
 
-    let character_style = MonoTextStyleBuilder::new()
-        // Uncomment to add strikethrough and/or underline to all sizes.
-        // .strikethrough_with_color(Rgb888::CSS_TOMATO)
-        // .underline_with_color(Rgb888::CSS_CORNFLOWER_BLUE)
-        .text_color(Rgb888::WHITE);
+    let mut character_style = MonoTextStyleBuilder::new().text_color(Rgb888::WHITE);
+    if args.strikethrough {
+        character_style = character_style.strikethrough_with_color(Rgb888::CSS_TOMATO);
+    }
+    if args.underline {
+        character_style = character_style.underline_with_color(Rgb888::CSS_CORNFLOWER_BLUE);
+    }
+    let character_style = character_style;
 
     let text_style = TextStyle::default();
 
