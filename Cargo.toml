@@ -1,9 +1,24 @@
 [package]
 name = "embedded-vintage-fonts"
+description = "Vintage fonts from embedded-graphics 0.6 back release 0.7"
 version = "0.1.0"
 edition = "2021"
+authors = ["Christian Meusel <christian.meusel@posteo.de>"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+license = "MIT OR Apache-2.0"
+
+categories = ["rendering", "embedded", "no-std"]
+keywords = ["bitmap", "monochrome", "font", "monospace"]
+
+documentation = "https://docs.rs/embedded-vintage-fonts"
+repository = "https://github.com/sirhcel/embedded-vintage-fonts"
+readme = "README.md"
+
+exclude = [
+    "/.github/",
+    ".gitignore",
+]
+
 
 [dependencies]
 embedded-graphics = "0.7.0"

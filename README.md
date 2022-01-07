@@ -7,6 +7,10 @@ back for the overhauled font handling from 0.7.
 They are back all but one: `Font6x6` uses variable-width glyphs which are
 currently not supported by 0.7.
 
+[![Build Status](https://github.com/sirhcel/embedded-vintage-fonts/actions/workflows/ci.yml/badge.svg)](https://github.com/sirhcel/embedded-vintage-fonts)
+[![crates.io](https://img.shields.io/crates/v/embedded-vintage-fonts.svg)](https://crates.io/crates/embedded-vintage-fonts)
+![Documentation](https://docs.rs/embedded-vintage-fonts/badge.svg)
+
 ## Specimens
 
 ### `FONT_6X8` formerly known as `Font6x8`
