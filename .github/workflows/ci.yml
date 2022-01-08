@@ -26,7 +26,9 @@ jobs:
       # SDL2 development support. So we need this dependency for testing as
       # well.
       - name: Install packages
-        run: sudo apt-get install -y libsdl2-dev
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsdl2-dev
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
