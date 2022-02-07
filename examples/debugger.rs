@@ -22,6 +22,10 @@ struct Args {
     /// Enable underline style
     #[clap(short, long)]
     underline: bool,
+
+    /// UI scale factor
+    #[clap(long, default_value = "2")]
+    scale: u32,
 }
 
 fn main() -> Result<(), core::convert::Infallible> {
@@ -71,7 +75,7 @@ fn main() -> Result<(), core::convert::Infallible> {
         position += font.character_size.y_axis() * test_text.lines().count() as u32;
     }
 
-    let output_settings = OutputSettingsBuilder::new().scale(2).build();
+    let output_settings = OutputSettingsBuilder::new().scale(args.scale).build();
     Window::new("Embedded Vintag Fonts Debugger", &output_settings).show_static(&display);
 
     Ok(())
