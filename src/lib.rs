@@ -64,7 +64,7 @@ const GLYPH_MAPPING_6X12: StrGlyphMapping =
 
 /// An upscaled version of [`FONT_12X16`] previously known as `Font24x32`.
 pub const FONT_24X32: MonoFont = MonoFont {
-    image: ImageRaw::new_binary(include_bytes!("../data/font24x32_1bpp.raw"), 960),
+    image: ImageRaw::new(include_bytes!("../data/font24x32_1bpp.raw"), 960),
     character_size: Size::new(24, 32),
     character_spacing: 0,
     baseline: 27,
@@ -78,7 +78,7 @@ pub const FONT_24X32: MonoFont = MonoFont {
 /// ![Source
 /// image](https://raw.githubusercontent.com/sirhcel/embedded-vintage-fonts/master/data/font12x16.png)
 pub const FONT_12X16: MonoFont = MonoFont {
-    image: ImageRaw::new_binary(include_bytes!("../data/font12x16_1bpp.raw"), 480),
+    image: ImageRaw::new(include_bytes!("../data/font12x16_1bpp.raw"), 480),
     character_size: Size::new(12, 16),
     character_spacing: 0,
     baseline: 13,
@@ -92,7 +92,7 @@ pub const FONT_12X16: MonoFont = MonoFont {
 /// ![Source
 /// image](https://raw.githubusercontent.com/sirhcel/embedded-vintage-fonts/master/data/font8x16.png)
 pub const FONT_8X16: MonoFont = MonoFont {
-    image: ImageRaw::new_binary(include_bytes!("../data/font8x16_1bpp.raw"), 240),
+    image: ImageRaw::new(include_bytes!("../data/font8x16_1bpp.raw"), 240),
     character_size: Size::new(8, 16),
     character_spacing: 0,
     baseline: 11,
@@ -106,7 +106,7 @@ pub const FONT_8X16: MonoFont = MonoFont {
 /// ![Source
 /// image](https://raw.githubusercontent.com/sirhcel/embedded-vintage-fonts/master/data/font6x12.png)
 pub const FONT_6X12: MonoFont = MonoFont {
-    image: ImageRaw::new_binary(include_bytes!("../data/font6x12_1bpp.raw"), 96),
+    image: ImageRaw::new(include_bytes!("../data/font6x12_1bpp.raw"), 96),
     character_size: Size::new(6, 12),
     character_spacing: 0,
     baseline: 9,
@@ -120,7 +120,7 @@ pub const FONT_6X12: MonoFont = MonoFont {
 /// ![Source
 /// image](https://raw.githubusercontent.com/sirhcel/embedded-vintage-fonts/master/data/font6x8.png)
 pub const FONT_6X8: MonoFont = MonoFont {
-    image: ImageRaw::new_binary(include_bytes!("../data/font6x8_1bpp.raw"), 240),
+    image: ImageRaw::new(include_bytes!("../data/font6x8_1bpp.raw"), 240),
     character_size: Size::new(6, 8),
     character_spacing: 0,
     baseline: 6,
