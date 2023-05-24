@@ -2,10 +2,10 @@
 
 Your dearly beloved fonts from
 [embedded-graphics](https://github.com/embedded-graphics/embedded-graphics) 0.6
-back for the overhauled font handling from 0.7.
+back for the overhauled font handling of 0.7 and above.
 
 They are back all but one: `Font6x6` uses variable-width glyphs which are
-currently not supported by 0.7.
+currently not supported by 0.7 and above.
 
 [![Build Status](https://github.com/sirhcel/embedded-vintage-fonts/actions/workflows/ci.yml/badge.svg)](https://github.com/sirhcel/embedded-vintage-fonts)
 [![crates.io](https://img.shields.io/crates/v/embedded-vintage-fonts.svg)](https://crates.io/crates/embedded-vintage-fonts)
